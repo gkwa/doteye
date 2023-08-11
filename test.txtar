@@ -1,0 +1,16 @@
+-- roles/mytest/tasks/main.yml --
+- name: Dummy task
+ansible.builtin.debug:
+    msg: "This is a dummy task changing ssh port to {{ ssh_port }}."
+register: task_result
+
+-- roles/mytest/defaults/main.yml --
+ssh_port: 22
+
+-- ansible.cfg --
+[defaults]
+inventory = hosts.yml
+roles_path = roles
+playbook_dir = playbooks
+error_on_undefined_vars = True
+host_key_checking = False
